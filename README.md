@@ -1,0 +1,1 @@
+Python written Discord bot for everyone to work on.

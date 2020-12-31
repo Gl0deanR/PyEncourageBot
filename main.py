@@ -17,6 +17,24 @@ def get_part_of_day(hour):
     )
 
 
+def print_commands():
+    return ('''
+        Full list of bot commands:
+        !commands       # prints all the available commands 
+        !info           # prints info about the bot
+        !hi, !hello     # responds from a list of words / sayings
+        !morning        # responds accordingly given the current time
+        !afternoon      # responds accordingly given the current time 
+        !evening        # responds accordingly given the current time
+        !night          # responds accordingly given the current time
+        !time           # prints the current time
+        !inspire        # prints a random inspiring quote from zenquotes API
+        # More will be added soon!
+        
+        # You can find the bot here: https://github.com/raulGLD/PyEncourageBot
+    ''')
+
+
 client = discord.Client()
 
 # list of sad words to check, please feel free to add more
@@ -67,6 +85,9 @@ async def on_message(message):
     say_part_of_day = get_part_of_day(h)
     country = 'Romania'
 
+    if msg.startswith('!comm'):
+        await message.channel.send(print_commands())
+
     if msg.startswith('!mornin') and say_part_of_day == 'morning':
         await message.channel.send(f'Morning {msg_author}')
     elif msg.startswith('!mornin') and say_part_of_day != 'morning':
@@ -101,6 +122,10 @@ async def on_message(message):
             await message.channel.send(f'{country} time is {h}:0{m}')
         else:
             await message.channel.send(f'{country} time is {h}:{m}')
+
+    if msg.startswith('!info'):
+        bot_link = 'https://github.com/raulGLD/PyEncourageBot'
+        await message.channel.send(f'Current version is 1.0. You can find the bot here: {bot_link}')
 
     if msg.startswith('!hi') or msg.startswith('!hello'):
         random_hi_message = random.choice(say_hello_words)

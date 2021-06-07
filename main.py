@@ -31,7 +31,7 @@ def print_commands():
         !inspire        # prints a random inspiring quote from zenquotes API
         # More will be added soon!
         
-        # You can find the bot here: https://github.com/raulGLD/PyEncourageBot
+        # You can find the bot here: https://github.com/Gl0deanR/PyEncourageBot
     ''')
 
 
